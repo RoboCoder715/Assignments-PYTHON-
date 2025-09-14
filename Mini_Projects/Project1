@@ -1,0 +1,62 @@
+import numpy as np
+
+data  = np.genfromtxt("sensor_data.csv", delimiter = ',',skip_header=1,usecols=(1,2,3,4))
+print(data)
+print(data.ndim)
+print(data.shape)
+
+
+temp = data[:,0]
+humidity = data[:,1]
+battery = data[:,2]
+distance = data[:,3] 
+print("\n") 
+print(f"The average value of temperature is {np.average(temp)}")
+print(f"The maximum value of temperature is {np.max(temp)}")
+print(f"The minimum value of temperature is {np.min(temp)}")
+
+print("\n")
+
+print(f"The average value of humidity is {np.average(humidity)}")
+print(f"The maximum value of humidity is {np.max(humidity)}")
+print(f"The minimum value of humidity is {np.min(humidity)}")
+
+print("\n")
+
+print(f"The average value of battery is {np.average(battery)}")
+print(f"The maximum value of battery is {np.max(battery)}")
+print(f"The minimum value of battery is {np.min(battery)}")
+
+print("\n")
+
+print(f"The average value of distance is {np.average(distance)}")
+print(f"The maximum value of distance is {np.max(distance)}")
+print(f"The minimum value of distance is {np.min(distance)}")
+
+
+time = np.argmax(temp) # It gives the index when the temp was maximum
+
+data2 = np.genfromtxt("sensor_data.csv",delimiter = ',',usecols=0,dtype ='str')
+print(data2.dtype)
+print(data2)
+
+print("\n")
+
+print(f"The time when the temperature was maximum is {data2[time]}")
+
+print("\n")
+
+count = 0
+for i in battery:
+    if(i<30):
+        count+=1
+    else:
+        count+=0
+print(f'The no. of time when the battery was less than 30 percent was {count}')
+
+print("\n")
+
+with open('result_csv','w') as d:
+    d.write(f'The no. of time when the battery was less than 30 percent was {count}')
+    d.write("\n")
+    d.write(f"The time when the temperature was maximum is {data2[time]}")
