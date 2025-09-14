@@ -1,0 +1,3 @@
+Total distance traveled by the robot: 26549.342533860814
+Farthest point from origin: (np.float64(-38.0), np.float64(-334.0)) with distance 336.1547262794322
+Did the robot revisit a position? Yes
